@@ -8,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +17,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Scaffold(
-        body: Center(child: TextToSpeech(),),
+        body: Center(
+          child: TextToSpeech(),
+        ),
       ),
     );
   }
@@ -29,7 +30,6 @@ class TextToSpeech extends StatelessWidget {
   final TextEditingController textEditingController = TextEditingController();
 
   TextToSpeech({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +43,9 @@ class TextToSpeech extends StatelessWidget {
             TextFormField(
               controller: textEditingController,
             ),
-            ElevatedButton(onPressed: () =>
-                speak(textEditingController.text), child: const Text("Speak"))
+            ElevatedButton(
+                onPressed: () => speak(textEditingController.text),
+                child: const Text("Speak"))
           ],
         ),
       ),
@@ -55,9 +56,8 @@ class TextToSpeech extends StatelessWidget {
     await flutterTts.setLanguage("en-US");
     await flutterTts.setPitch(1.2);
     await flutterTts.setSpeechRate(0.55);
-    List language = List<String>.from(await flutterTts.getLanguages);
-    print(language);
-
+    // List language = List<String>.from(await flutterTts.getLanguages);
+    // print(language);
     await flutterTts.speak(text);
   }
 }
