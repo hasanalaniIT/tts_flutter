@@ -52,12 +52,15 @@ class TextToSpeech extends StatelessWidget {
     );
   }
 
-  speak(String text) async {
-    await flutterTts.setLanguage("en-US");
-    await flutterTts.setPitch(1.2);
-    await flutterTts.setSpeechRate(0.55);
-    // List language = List<String>.from(await flutterTts.getLanguages);
-    // print(language);
+  void speak(
+    String text, {
+    double speechRate = 0.55,
+    String language = "en-US",
+    double pitch = 1.2,
+  }) async {
+    await flutterTts.setLanguage(language);
+    await flutterTts.setPitch(pitch);
+    await flutterTts.setSpeechRate(speechRate);
     await flutterTts.speak(text);
   }
 }
